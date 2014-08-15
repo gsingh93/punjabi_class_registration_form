@@ -54,14 +54,14 @@ void submit(Event e) {
   assert(students.length != 0);
   
   List<String> errors = new List<String>();
-  mother.xtag.check(errors);
-  father.xtag.check(errors);
-  email.xtag.check(errors);
-  address.xtag.check(errors);
-  phoneNumber.xtag.check(errors);
+  mother.check(errors);
+  father.check(errors);
+  email.check(errors);
+  address.check(errors);
+  phoneNumber.check(errors);
   int numEntries = _getNumEntries();
   for (int i = 0; i < numEntries; i++) {
-    students[i].xtag.check(errors);
+    students[i].check(errors);
   }
   
   if (errors.isNotEmpty) {
@@ -70,25 +70,25 @@ void submit(Event e) {
   }
   
   for (int i = 0; i < numEntries; i++) {
-//    HttpRequest request = new HttpRequest();
-//    request.open("POST", _url, async: false);
-//    request.setRequestHeader("Content-Type", "application/json");
-//    request.onReadyStateChange.listen((_) => onComplete(request));
+    HttpRequest request = new HttpRequest();
+    request.open("POST", _url, async: false);
+    request.setRequestHeader("Content-Type", "application/json");
+    request.onReadyStateChange.listen((_) => onComplete(request));
     
     String jsonData = sprintf(jsonFormat,
-                              [address.xtag.address,
-                              email.xtag.email,
-                              phoneNumber.xtag.phoneNumber,
-                              students[i].xtag.name,
-                              students[i].xtag.className,
-                              students[i].xtag.birthday,
-                              mother.xtag.fullName,
-                              father.xtag.fullName]);
+                              [address.address,
+                              email.email,
+                              phoneNumber.phoneNumber,
+                              students[i].name,
+                              students[i].className,
+                              students[i].birthday,
+                              mother.fullName,
+                              father.fullName]);
     
     print(jsonData);
-//    request.send(jsonData);
+    request.send(jsonData);
   }
-//  _loadingGifOn();
+  _loadingGifOn();
 }
 
 void clearFields() {
@@ -97,12 +97,12 @@ void clearFields() {
   PhoneNumber phoneNumber = querySelector('x-phone-number');
   List<FullName> names = querySelectorAll('x-full-name');
   
-  email.xtag.clear();
-  address.xtag.clear();
-  phoneNumber.xtag.clear();
+  email.clear();
+  address.clear();
+  phoneNumber.clear();
   int numEntries = _getNumEntries();
   for (int i = 1; i <= numEntries; i++) {
-    names[i].xtag.clear();
+    names[i].clear();
   }
 }
 

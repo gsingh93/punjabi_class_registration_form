@@ -2,39 +2,49 @@ library student;
 
 import 'package:polymer/polymer.dart';
 import 'package:form_elements/required_component.dart';
+import 'package:form_elements/full_name.dart';
+import 'package:form_elements/date.dart';
+import 'class_selector.dart';
 import 'dart:html';
-import 'util.dart';
 
 @CustomTag('x-student')
 class Student extends RequiredComponent {
-  String get _nameId => "x-student-name-" + xid;
-  String get _classId => "x-student-class-" + xid;
-  String get _birthdayId => "x-student-birthday-" + xid;
+  String get nameId => "x-student-name-" + xid;
+  String get classId => "x-student-class-" + xid;
+  String get birthdayId => "x-student-birthday-" + xid;
   
   Student.created() : super.created();
   
+  Element queryId(String id) {
+    Element e = $[id];
+    if (e == null) {
+      throw new Exception('#' + id + " was not found");    
+    }
+    return e;
+  }
+
   String get name {
-    DivElement fullNameElt = queryId(_nameId);
-    return fullNameElt.xtag.fullName;
+    FullName fullNameElt = queryId(nameId);
+    return fullNameElt.fullName;
   }
   
   String get className {
-    DivElement classElt = queryId(_classId);
-    return classElt.xtag.className;
+    ClassSelector classElt = queryId(classId);
+    return classElt.className;
   }
   
   String get birthday {
-    DivElement birthdayElt = queryId(_birthdayId);
-    return birthdayElt.xtag.date;
+    Date birthdayElt = queryId(birthdayId);
+    return birthdayElt.date;
   }
   
   void check(List<String> errors) {
-    DivElement fullNameElt = queryId(_nameId);
-    fullNameElt.xtag.check(errors);
+    FullName fullNameElt = queryId(nameId);
+    fullNameElt.check(errors);
   }
   
   void clear() {
-    DivElement fullNameElt = queryId(_nameId);
-    fullNameElt.xtag.clear();
+    FullName fullNameElt = queryId(nameId);
+    fullNameElt.clear();
   }
 }
