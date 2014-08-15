@@ -1,0 +1,13 @@
+<link rel="import" href="packages/form_elements/date.html">
+<link rel="import" href="packages/form_elements/full_name.html">
+<link rel="import" href="class_selector.html">
+
+<polymer-element name="x-student">
+  <template>
+    <h3>Student {{xid}}</h3>
+    <x-full-name xid="{{xid}}" id="{{_nameId}}"></x-full-name>
+    <x-class-selector xid="{{xid}}" id="{{_classId}}" style="margin-left: 40px"></x-class-selector>
+    <x-date id="{{_birthdayId}}" xid="{{xid}}" style="margin-left: 40px"></x-date>
+  </template>
+  <script type="application/dart" src="student.dart"></script>
+</polymer-element>
