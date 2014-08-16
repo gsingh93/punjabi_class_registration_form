@@ -8,8 +8,8 @@ import 'dart:html';
 import '../util.dart';
 import '../student.dart';
 
-//const String _url = "http://www.michigangurudwara.com/wordpress/wp-content/app/punjabi-class-registration/submit.php";
-const String _url = "localhost";
+const String _url = "https://api.parse.com/1/classes/Student";
+const String _successUrl = "http://michigangurudwara.com/wordpress/wp-content/app/punjabi-class-registration/success.html";
 
 void main() {
   initPolymer();
@@ -22,7 +22,7 @@ void onComplete(HttpRequest request) {
       (request.status == 200 || request.status == 0)) {
     _loadingGifOff();
     if (request.responseText == "success") {
-      window.location.href = "http://michigangurudwara.com/wordpress/wp-content/app/punjabi-class-registration/success.html";
+      window.location.href = _successUrl;
     } else {
       window.alert("An error occurred");
     }
@@ -73,6 +73,8 @@ void submit(Event e) {
     HttpRequest request = new HttpRequest();
     request.open("POST", _url, async: false);
     request.setRequestHeader("Content-Type", "application/json");
+    request.setRequestHeader("X-Parse-Application-Id", "AogX439PltSvXCM8XNKry0M5cdEDQE77s4rrFkJ1");
+    request.setRequestHeader("X-Parse-REST-API-Key", "ucHeWSHsIhSlhjbO9S2w8qgM5IqxOwxNjbKWspQj");
     request.onReadyStateChange.listen((_) => onComplete(request));
     
     String jsonData = sprintf(jsonFormat,
