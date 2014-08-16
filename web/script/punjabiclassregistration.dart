@@ -54,15 +54,15 @@ void submit(Event e) {
   assert(students.length != 0);
   
   List<String> errors = new List<String>();
-  mother.check(errors);
-  father.check(errors);
-  email.check(errors);
-  address.check(errors);
-  phoneNumber.check(errors);
   int numEntries = _getNumEntries();
   for (int i = 0; i < numEntries; i++) {
     students[i].check(errors);
   }
+  mother.check(errors);
+  father.check(errors);
+  address.check(errors);
+  email.check(errors);
+  phoneNumber.check(errors);
   
   if (errors.isNotEmpty) {
     _displayErrors(errors);

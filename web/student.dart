@@ -41,6 +41,8 @@ class Student extends RequiredComponent {
   void check(List<String> errors) {
     FullName fullNameElt = queryId(nameId);
     fullNameElt.check(errors);
+    ClassSelector classElt = queryId(classId);
+    classElt.check(errors);
   }
   
   void clear() {

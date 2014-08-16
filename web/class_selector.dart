@@ -2,21 +2,21 @@ library class_selector;
 
 import 'package:polymer/polymer.dart';
 import 'dart:html';
+import 'package:form_elements/required_component.dart';
 
 @CustomTag('x-class-selector')
-class ClassSelector extends PolymerElement {
-  @published String xid = "1";
+class ClassSelector extends RequiredComponent {
   String get classId => "class-" + xid;
   
   ClassSelector.created() : super.created();
   
-  // TODO: This is duplicated
-  Element queryId(String id) {
-    Element e = $[id];
-    if (e == null) {
-      throw new Exception('#' + id + " was not found");    
+  void check(List<String> errors) {
+    if (className == "invalid") {
+      errors.add("Please select a grade, or select \"I don't know\" if you are not sure");
     }
-    return e;
+  }
+
+  void clear() {
   }
 
   String get className {
