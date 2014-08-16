@@ -147,4 +147,8 @@ void numEntriesChanged() {
       studentElt.style.display = "block";
     }
   }
+
+  int cost = 50;
+  SpanElement costElt = queryId("cost");
+  costElt.innerHtml = (cost * numEntries).toString();
 }

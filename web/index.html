@@ -39,8 +39,6 @@
     </select>
 
     <form>
-
-
       <x-student xid="1" required="true"></x-student>
       <x-student xid="2" required="true" style="display:none"></x-student>
       <x-student xid="3" required="true" style="display:none"></x-student>
@@ -59,7 +57,7 @@
       <x-phone-number required="true"></x-phone-number>
 
       <br>
-      The payment of the $50 school fee can be given to Kanwerdip Singh in person.
+      The payment of the $<span id="cost">50</span> (total) school fee can be given to Kanwerdip Singh in person.
       <br><br>
 
       <button id="submit" class="submit">Submit</button>
