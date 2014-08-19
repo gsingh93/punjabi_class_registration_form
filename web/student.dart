@@ -9,6 +9,8 @@ import 'dart:html';
 
 @CustomTag('x-student')
 class Student extends RequiredComponent {
+  @observable bool male = false;
+  @observable bool female = false;
   String get nameId => "x-student-name-" + xid;
   String get classId => "x-student-class-" + xid;
   String get birthdayId => "x-student-birthday-" + xid;
@@ -38,11 +40,27 @@ class Student extends RequiredComponent {
     return birthdayElt.date;
   }
   
+  String get gender {
+    assert(!(male && female));
+    if (male) {
+      return "Male";
+    } else if (female) {
+      return "Female";
+    } else {
+      return "";
+    }
+  }
+  
   void check(List<String> errors) {
     FullName fullNameElt = queryId(nameId);
     fullNameElt.check(errors);
     ClassSelector classElt = queryId(classId);
     classElt.check(errors);
+    
+    // Check gender
+    if (gender == "") {
+      errors.add("Student " + xid + " gender is required");
+    }
   }
   
   void clear() {

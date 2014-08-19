@@ -6,8 +6,12 @@
   <template>
     <h3>Student {{xid}}</h3>
     <x-full-name xid="{{xid}}" id="{{nameId}}"></x-full-name>
-    <x-class-selector xid="{{xid}}" id="{{classId}}" style="margin-left: 40px"></x-class-selector>
-    <x-date id="{{birthdayId}}" xid="{{xid}}" style="margin-left: 40px"></x-date>
+    <x-class-selector xid="{{xid}}" id="{{classId}}" style="margin-left: 40px"></x-class-selector><br>
+    <x-date id="{{birthdayId}}" xid="{{xid}}" style="margin-left: 40px"></x-date><br>
+    <form style="margin-left: 200px">
+      <input type="radio" name="gender" value="male" checked={{male}}>Male
+      <input type="radio" name="gender" value="female" checked={{female}}>Female
+    </form>
   </template>
   <script type="application/dart" src="student.dart"></script>
 </polymer-element>

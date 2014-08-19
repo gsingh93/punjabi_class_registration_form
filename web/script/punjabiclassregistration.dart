@@ -40,6 +40,7 @@ void submit(Event e) {
     "name": "%s",
     "class": "%s",
     "birthday": "%s",
+    "gender": "%s",
     "mother": "%s",
     "father": "%s"
   }
@@ -84,6 +85,7 @@ void submit(Event e) {
                               students[i].name,
                               students[i].className,
                               students[i].birthday,
+                              students[i].gender,
                               mother.fullName,
                               father.fullName]);
     
