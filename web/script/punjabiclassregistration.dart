@@ -9,7 +9,7 @@ import '../util.dart';
 import '../student.dart';
 
 const String _url = "https://api.parse.com/1/classes/Student";
-const String _successUrl = "http://michigangurudwara.com/wordpress/wp-content/app/punjabi-class-registration/success.html";
+const String _successUrl = "success.html";
 
 int successfulSubmissions = 0;
 
