@@ -14,9 +14,10 @@ const String _successUrl = "http://michigangurudwara.com/wordpress/wp-content/ap
 int successfulSubmissions = 0;
 
 void main() {
-  initPolymer();
-  queryId('numentries').onChange.listen((e) => numEntriesChanged());
-  queryId('submit').onClick.listen((e) => submit(e));
+  initPolymer().run(() {
+    queryId('numentries').onChange.listen((e) => numEntriesChanged());
+    queryId('submit').onClick.listen((e) => submit(e));
+  });
 }
 
 void onComplete(HttpRequest request) {

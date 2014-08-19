@@ -1,7 +1,3 @@
-.polymer-veiled {
-  opacity: 0;
-}
-
 body, body /deep/ body {
   background-color: #F8F8F8;
   font-family: 'Open Sans', sans-serif;
