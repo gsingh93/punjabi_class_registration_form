@@ -18,14 +18,13 @@ void main() {
 }
 
 void onComplete(HttpRequest request) {
-  if (request.readyState == HttpRequest.DONE &&
-      (request.status == 200 || request.status == 0)) {
-    _loadingGifOff();
-    if (request.responseText == "success") {
-      window.location.href = _successUrl;
-    } else {
-      window.alert("An error occurred");
-    }
+  _loadingGifOff();
+  if (request.readyState == HttpRequest.DONE && request.status == 201) {
+    window.location.href = _successUrl;
+  } else {
+    print("Status: " + request.status.toString());
+    print("Response: " + request.responseText);
+    window.alert("An error occured, please try again.");
   }
 }
 
