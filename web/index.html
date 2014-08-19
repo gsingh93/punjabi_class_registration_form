@@ -32,6 +32,7 @@
 
     <label for="numentries">Number of Students:</label>
     <select id="numentries">
+      <option value="0">Please choose one</option>
       <option value="1">1</option>
       <option value="2">2</option>
       <option value="3">3</option>
@@ -39,7 +40,7 @@
     </select>
 
     <form>
-      <x-student xid="1" required="true"></x-student>
+      <x-student xid="1" required="true" style="display:none"></x-student>
       <x-student xid="2" required="true" style="display:none"></x-student>
       <x-student xid="3" required="true" style="display:none"></x-student>
       <x-student xid="4" required="true" style="display:none"></x-student>

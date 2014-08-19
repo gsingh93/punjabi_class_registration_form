@@ -56,6 +56,10 @@ void submit(Event e) {
   
   List<String> errors = new List<String>();
   int numEntries = _getNumEntries();
+  if (numEntries == 0) {
+    errors.add("You must enroll at least one student");
+  }
+  
   for (int i = 0; i < numEntries; i++) {
     students[i].check(errors);
   }
