@@ -11,6 +11,8 @@ import '../student.dart';
 const String _url = "https://api.parse.com/1/classes/Student";
 const String _successUrl = "http://michigangurudwara.com/wordpress/wp-content/app/punjabi-class-registration/success.html";
 
+int successfulSubmissions = 0;
+
 void main() {
   initPolymer();
   queryId('numentries').onChange.listen((e) => numEntriesChanged());
@@ -20,7 +22,10 @@ void main() {
 void onComplete(HttpRequest request) {
   _loadingGifOff();
   if (request.readyState == HttpRequest.DONE && request.status == 201) {
-    window.location.href = _successUrl;
+    successfulSubmissions++;
+    if (successfulSubmissions == _getNumEntries()) {
+      window.location.href = _successUrl;
+    }
   } else {
     print("Status: " + request.status.toString());
     print("Response: " + request.responseText);
