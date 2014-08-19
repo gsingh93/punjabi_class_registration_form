@@ -35,7 +35,8 @@ void submit(Event e) {
   String jsonFormat = '''
   {
     "address": "%s",
-    "email": "%s",
+    "primaryEmail": "%s",
+    "secondaryEmail": "%s",
     "phoneNumber": "%s",
     "name": "%s",
     "class": "%s",
@@ -49,7 +50,8 @@ void submit(Event e) {
   FullName mother = queryId('mother-name');
   FullName father = queryId('father-name');
   Address address = querySelector('x-address');
-  Email email = querySelector('x-email');
+  Email email = queryId('primary-email');
+  Email secondaryEmail = queryId('secondary-email');
   PhoneNumber phoneNumber = querySelector('x-phone-number');
   List<Student> students = querySelectorAll('x-student');
   assert(students.length != 0);
@@ -67,6 +69,7 @@ void submit(Event e) {
   father.check(errors);
   address.check(errors);
   email.check(errors);
+  secondaryEmail.check(errors);
   phoneNumber.check(errors);
   
   if (errors.isNotEmpty) {
@@ -85,6 +88,7 @@ void submit(Event e) {
     String jsonData = sprintf(jsonFormat,
                               [address.address,
                               email.email,
+                              secondaryEmail.email,
                               phoneNumber.phoneNumber,
                               students[i].name,
                               students[i].className,
