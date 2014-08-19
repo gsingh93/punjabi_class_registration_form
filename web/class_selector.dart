@@ -6,7 +6,7 @@ import 'package:form_elements/required_component.dart';
 
 @CustomTag('x-class-selector')
 class ClassSelector extends RequiredComponent {
-  String get classId => "class-" + xid;
+  String get classId => "class";
   
   ClassSelector.created() : super.created();
   
