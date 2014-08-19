@@ -73,6 +73,7 @@ void submit(Event e) {
   
   if (errors.isNotEmpty) {
     _displayErrors(errors);
+    window.scrollTo(0, 0);
     return;
   }
   
